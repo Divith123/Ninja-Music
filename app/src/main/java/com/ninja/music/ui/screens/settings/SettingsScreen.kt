@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Badge
-import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -20,7 +18,6 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.ninja.music.BuildConfig
 import com.ninja.music.LocalPlayerAwareWindowInsets
 import com.ninja.music.R
 import com.ninja.music.ui.component.IconButton
@@ -32,10 +29,7 @@ import com.ninja.music.ui.utils.backToMain
 fun SettingsScreen(
     navController: NavController,
     scrollBehavior: TopAppBarScrollBehavior,
-    latestVersionName: String,
 ) {
-    val uriHandler = LocalUriHandler.current
-
     Column(
         Modifier
             .windowInsetsPadding(LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom))
@@ -83,26 +77,6 @@ fun SettingsScreen(
             icon = { Icon(painterResource(R.drawable.info), null) },
             onClick = { navController.navigate("settings/about") }
         )
-        if (latestVersionName != BuildConfig.VERSION_NAME) {
-            PreferenceEntry(
-                title = {
-                    Text(
-                        text = stringResource(R.string.new_version_available),
-                    )
-                },
-                description = latestVersionName,
-                icon = {
-                    BadgedBox(
-                        badge = { Badge() }
-                    ) {
-                        Icon(painterResource(R.drawable.update), null)
-                    }
-                },
-                onClick = {
-                    uriHandler.openUri("https://github.com/z-huang/InnerTune/releases/latest")
-                }
-            )
-        }
     }
 
     TopAppBar(

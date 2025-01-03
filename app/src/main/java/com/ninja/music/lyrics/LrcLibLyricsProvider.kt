@@ -7,7 +7,7 @@ import com.ninja.music.utils.dataStore
 import com.ninja.music.utils.get
 
 /**
- * Source: https://github.com/Malopieds/InnerTune
+ * Source: https://github.com/Divith123/Ninja-Music
  */
 object LrcLibLyricsProvider : LyricsProvider {
     override val name = "LrcLib"

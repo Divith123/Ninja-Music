@@ -149,15 +149,6 @@ fun AboutScreen(
             }
 
             IconButton(
-                onClick = { uriHandler.openUri("https://liberapay.com/ninjaonsteroids") }
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.liberapay),
-                    contentDescription = null
-                )
-            }
-
-            IconButton(
                 onClick = { uriHandler.openUri("https://www.buymeacoffee.com/ninjaonsteroids") }
             ) {
                 Icon(
